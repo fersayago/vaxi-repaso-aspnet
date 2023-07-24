@@ -7,9 +7,10 @@ Console.WriteLine("Hello, World!");
     
     1. El cliente ingresa un numero x
     2. El cliente ingresa un segundo numero y
-    3. El programa captura estos valores y los almacena en variables
-    4. El programa se encarga de realizar la operacion matematica
-    5. El programa se encarga de imprimir el resultado de la operacion
+    3. El cliente ingresa el tipo de operacion a realizar
+    4. El programa captura estos valores y los almacena en variables
+    5. El programa se encarga de realizar la operacion matematica
+    6. El programa se encarga de imprimir el resultado de la operacion
 
 */
 
@@ -60,30 +61,89 @@ else
 
 Console.Write("Por favor ingrese el segundo numero:");
 var segundoNumeroString = Console.ReadLine();
-var segundoNumeroInt = int.Parse(segundoNumeroString!);
+int segundoNumeroInt = 0;
+if (string.IsNullOrEmpty(segundoNumeroString))
+{
+    Console.WriteLine("El valor ingresado es nulo");
+    return;
+}
 
-// SUMA
-//var resultadoSuma = primerNumeroInt + segundoNumeroInt;
-var resultadoSuma = primerNumeroInt;
-resultadoSuma += segundoNumeroInt;
-Console.WriteLine("El resultado de la SUMA es:" + resultadoSuma);
+if (!int.TryParse(segundoNumeroString, out segundoNumeroInt))
+{
+    Console.WriteLine("El valor ingresado no es un numero");
+    return;
+}
 
-// RESTA
-//var resultadoResta = primerNumeroInt- segundoNumeroInt;
-var resultadoResta = primerNumeroInt;
-resultadoResta -= segundoNumeroInt;
-Console.WriteLine("El resultado de la RESTA es:" + resultadoResta);
+// SELECCIÓN DE OPERACIÓN
+Console.WriteLine("Seleccione la operacion a realizar: \n1) Suma\n2) Resta\n3) Multiplicación\n4) Division");
 
-// MULTIPLICACIÓN
-//var resultadoMultiplicacion = primerNumeroInt * segundoNumeroInt;
-var resultadoMultiplicacion = primerNumeroInt;
-resultadoMultiplicacion *= segundoNumeroInt;
-Console.WriteLine($"El resultado de la MULTIPLICACION es {resultadoMultiplicacion}");
+int tipoOperacion = int.TryParse(Console.ReadLine(), out tipoOperacion) ? tipoOperacion : 0;
 
-// DIVISION
-//var resultadoDivision = primerNumeroInt / segundoNumeroInt;
-var resultadoDivision = primerNumeroInt;
-resultadoDivision /= segundoNumeroInt;
-Console.WriteLine($"El resultado de la DIVISION es {resultadoDivision}");
+switch (tipoOperacion)
+{
+    case 1:
+        {
+            // SUMA
+            var total = primerNumeroInt;
+            total += segundoNumeroInt;
+            Console.WriteLine($"{primerNumeroInt} + {segundoNumeroInt} = {total}");
+            break;
+        }
+    case 2:
+        {
+            // RESTA
+            var total = primerNumeroInt;
+            total -= segundoNumeroInt;
+            Console.WriteLine($"{primerNumeroInt} - {segundoNumeroInt} = {total}");
+            break;
+        }
+    case 3:
+        {
+            // MULTIPLICACIÓN
+            var total = primerNumeroInt;
+            total *= segundoNumeroInt;
+            Console.WriteLine($"{primerNumeroInt} x {segundoNumeroInt} = {total}");
+            break;
+        }
+    case 4:
+        {
+            // DIVISION
+            var total = primerNumeroInt;
+            total /= segundoNumeroInt;
+            Console.WriteLine($"{primerNumeroInt} / {segundoNumeroInt} = {total}");
+            break;
+        }
+    default:
+        {
+            Console.WriteLine("Se ingreso un valor erroneo, se debe ingresar un numero del 1 al 4");
+            break;
+        }
+}
+
+
+
+//// SUMA
+////var resultadoSuma = primerNumeroInt + segundoNumeroInt;
+//var resultadoSuma = primerNumeroInt;
+//resultadoSuma += segundoNumeroInt;
+//Console.WriteLine("El resultado de la SUMA es:" + resultadoSuma);
+
+//// RESTA
+////var resultadoResta = primerNumeroInt- segundoNumeroInt;
+//var resultadoResta = primerNumeroInt;
+//resultadoResta -= segundoNumeroInt;
+//Console.WriteLine("El resultado de la RESTA es:" + resultadoResta);
+
+//// MULTIPLICACIÓN
+////var resultadoMultiplicacion = primerNumeroInt * segundoNumeroInt;
+//var resultadoMultiplicacion = primerNumeroInt;
+//resultadoMultiplicacion *= segundoNumeroInt;
+//Console.WriteLine($"El resultado de la MULTIPLICACION es {resultadoMultiplicacion}");
+
+//// DIVISION
+////var resultadoDivision = primerNumeroInt / segundoNumeroInt;
+//var resultadoDivision = primerNumeroInt;
+//resultadoDivision /= segundoNumeroInt;
+//Console.WriteLine($"El resultado de la DIVISION es {resultadoDivision}");
 
 
