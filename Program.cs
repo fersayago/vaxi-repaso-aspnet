@@ -216,51 +216,133 @@ Console.WriteLine("Hello, World!");
 
 //// ---------METODOS---------
 
-void ImprimirTexto()
+//void ImprimirTexto()
+//{
+//    Console.WriteLine("Texto a imprimir");
+//}
+
+//ImprimirTexto();
+
+//// Metodos en C#
+
+//// 1. El usuario ingresa el numero que representa cuantas veces se generarar este valor aleatorio
+//// 2. En el bucle se generara un numero aleatorio entre 1 y 1000
+//// 3. Imprimir dentro del bucle este numero aleatorio previamente generado.
+
+//void ImprimirNumeroAleatorio()
+//{
+//    Console.WriteLine("Ingrese el numero de veces a generar aleatorios");
+//    var numeroRango = int.Parse(Console.ReadLine()!);
+
+//    var random = new Random();
+//    for (int i = 1; i <= numeroRango; i++)
+//    {
+//        var numeroAleatorio = random.Next(1, 100);
+//        Console.WriteLine($"El numero aleatorio generado eso {numeroAleatorio}");
+//    }
+//}
+
+
+//ImprimirNumeroAleatorio();
+
+//// Parametros en metodos
+
+//ImprimirNumeroPorParametro(5, "El numero por parametro generado es");
+
+//// En este caso se van a tomar los valores por defecto del metodo
+//ImprimirNumeroPorParametro();
+
+//// En este caso forzamos los parametros con nombre (nos permite cambiar el orden)
+//ImprimirNumeroPorParametro(mensaje: "Mensaje forzado por nombre", numeroRangoPorParametro: 7);
+
+//void ImprimirNumeroPorParametro(int numeroRangoPorParametro = 2, string mensaje = "Mensaje por defecto")
+//{
+//    var random = new Random();
+//    for (int i = 1; i <= numeroRangoPorParametro; i++)
+//    {
+//        var numeroAleatorio = random.Next(1, 100);
+//        Console.WriteLine($"{mensaje} {numeroAleatorio}");
+//    }
+//}
+
+// // Parametros por referencia
+
+// // Objetivo: Calcular el sueldo total de un empleado
+// // 1. El metodo recibe los valores de salario y restarle impuesto y obra social
+// // 2. Calcula el total que debe recibir de salario en función de estos parametros
+// // 3. El metodo debe devolver el salario total
+
+// int salarioTotal = 0;
+// // ! usando out mediante el parametro por referencia podemos hacer uqe una función void devuelva un valor
+// CalcularSalarioTotal(salario: 1000, impuesto: 200, obraSocial: 100, out salarioTotal);
+// Console.WriteLine($"El salario total luego de impuestos es de ${salarioTotal}");
+
+// void CalcularSalarioTotal(int salario, int impuesto, int obraSocial, out int total)
+// {
+//     total = salario - impuesto - obraSocial;
+// }
+
+//// Metodos que retornan un valor
+
+//var mensaje = GetMensajePorEdad(18);
+
+//Console.WriteLine(mensaje);
+
+//string GetMensajePorEdad(int edad)
+//{
+//  if (edad >= 18)
+//  {
+//    return "Es mayor de edad";
+//  }
+//  else {
+//    return "Es menor de edad";
+//  }
+//}
+
+//// Tuplas en C#
+
+//// (int a, string b, bool c) miTupla = (2, "String inicial", true);
+//// tambien se puede definir de forma implicita de la siguiente manera:
+//var miTupla = (2, "String inicial", true);
+
+//// ya que no tiene el nombre de variables se accede a ellas mediante Itemn segun el orden en la declaración
+//var miTuplaItem1 = miTupla.Item1;
+
+
+//// asignar en tiempo de ejecución nuevos valores a la tupla
+//miTupla.Item2 = "Fernando";
+
+//Console.WriteLine($"Saludo desde tupla: Hola {miTupla.Item2}");
+
+//// podemos asignar a una variable para luego hacer el writeLine
+//var miTuplaValorItem3 = miTupla.Item3;
+//Console.WriteLine($"Tercer valor de la tupla: {miTuplaValorItem3}");
+
+// Metodos y tuplas
+
+// objetivo: Registrar un nuevo producto en una tienda
+// 1. El usuario ingresa ladata del producto como: nombre, precio, stoc
+// 2. El programa va a capturar la data y procedera a poner un precio de venta que
+// incluya el costo del impuesto del producto
+// 3. El metodo de registro de producto debe devolver la data del producto
+// 4. El programa debe imprimir la data del producto registrado
+
+Console.WriteLine("Ingrese el nombre del producto");
+var nombreProducto = Console.ReadLine();
+
+Console.WriteLine("Ingrese el precio del producto");
+var precioProducto = int.Parse(Console.ReadLine()!);
+
+Console.WriteLine("Ingrese el stock del producto");
+var stockProducto = int.Parse(Console.ReadLine()!);
+
+(double, int, string) GetProducto(string nombreProducto, int precioProducto, int stock)
 {
-    Console.WriteLine("Texto a imprimir");
+    var precioFinal = precioProducto + precioProducto * 0.2;
+
+    return (precioFinal, stock, nombreProducto);
 }
 
-ImprimirTexto();
+var tupla = GetProducto(nombreProducto!, precioProducto, stockProducto);
 
-// Metodos en C#
-
-// 1. El usuario ingresa el numero que representa cuantas veces se generarar este valor aleatorio
-// 2. En el bucle se generara un numero aleatorio entre 1 y 1000
-// 3. Imprimir dentro del bucle este numero aleatorio previamente generado.
-
-void ImprimirNumeroAleatorio()
-{
-    Console.WriteLine("Ingrese el numero de veces a generar aleatorios");
-    var numeroRango = int.Parse(Console.ReadLine()!);
-
-    var random = new Random();
-    for (int i = 1; i <= numeroRango; i++)
-    {
-        var numeroAleatorio = random.Next(1, 100);
-        Console.WriteLine($"El numero aleatorio generado eso {numeroAleatorio}");
-    }
-}
-
-
-ImprimirNumeroAleatorio();
-
-// Parametros en metodos
-
-ImprimirNumeroPorParametro(5, "El numero por parametro generado es");
-
-// En este caso se van a tomar los valores por defecto del metodo
-ImprimirNumeroPorParametro();
-
-// En este caso forzamos los parametros con nombre (nos permite cambiar el orden)
-ImprimirNumeroPorParametro(mensaje: "Mensaje forzado por nombre", numeroRangoPorParametro: 7);
-
-void ImprimirNumeroPorParametro(int numeroRangoPorParametro = 2, string mensaje = "Mensaje por defecto")
-{
-    var random = new Random();
-    for (int i = 1; i <= numeroRangoPorParametro; i++)
-    {
-        var numeroAleatorio = random.Next(1, 100);
-        Console.WriteLine($"{mensaje} {numeroAleatorio}");
-    }
-}
+Console.WriteLine($"datos del producto {tupla.Item3}\nStock: {tupla.Item2}\nPrecio Final: {tupla.Item1}");
