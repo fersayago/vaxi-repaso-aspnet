@@ -223,6 +223,8 @@ void ImprimirTexto()
 
 ImprimirTexto();
 
+// Metodos en C#
+
 // 1. El usuario ingresa el numero que representa cuantas veces se generarar este valor aleatorio
 // 2. En el bucle se generara un numero aleatorio entre 1 y 1000
 // 3. Imprimir dentro del bucle este numero aleatorio previamente generado.
@@ -240,4 +242,25 @@ void ImprimirNumeroAleatorio()
     }
 }
 
+
 ImprimirNumeroAleatorio();
+
+// Parametros en metodos
+
+ImprimirNumeroPorParametro(5, "El numero por parametro generado es");
+
+// En este caso se van a tomar los valores por defecto del metodo
+ImprimirNumeroPorParametro();
+
+// En este caso forzamos los parametros con nombre (nos permite cambiar el orden)
+ImprimirNumeroPorParametro(mensaje: "Mensaje forzado por nombre", numeroRangoPorParametro: 7);
+
+void ImprimirNumeroPorParametro(int numeroRangoPorParametro = 2, string mensaje = "Mensaje por defecto")
+{
+    var random = new Random();
+    for (int i = 1; i <= numeroRangoPorParametro; i++)
+    {
+        var numeroAleatorio = random.Next(1, 100);
+        Console.WriteLine($"{mensaje} {numeroAleatorio}");
+    }
+}
