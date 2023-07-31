@@ -165,7 +165,7 @@ for (int i = 1; i < 10; i++)
 
 //WHILE
 
-// 1. El usuario ingresa un numero
+// 1. El usuario ingresa un numero  
 // 2. El programa captura el numero e imprime una lista de numeros superiores hasta el maximo de 100
 // regla: el numero ingresado debe ser menor que 100
 
@@ -189,8 +189,24 @@ int numeroDoWhile = 0;
 
 do
 {
-    Console.WriteLine("Ingrese el numero a sumar:");
-    numeroDoWhile = int.Parse(Console.ReadLine()!);
+    try
+    {
+        Console.WriteLine("Ingrese el numero a sumar:");
+        numeroDoWhile = int.Parse(Console.ReadLine()!);
+    }
+    // catch(Exception e) para una excepción mas general
+    // en este caso queremos devolver un error de que no se devolvio un valor numerico
+    catch(System.FormatException error)
+    {
+        Console.WriteLine("El error es el siguiente:\n" + error.Message);
+        if (error.Message is null)
+        {
+            throw;
+        }
+
+        // anulamos la iteración para que no quede almacenado el numero anterior
+        continue;
+    }
 
     acumulador += numeroDoWhile;
 }
