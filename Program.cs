@@ -147,69 +147,97 @@ Console.WriteLine("Hello, World!");
 ////Console.WriteLine($"El resultado de la DIVISION es {resultadoDivision}");
 
 
-// ---------BUCLES---------
+//// ---------BUCLES---------
 
-// FOR
-// 1. El usuaruio ingresa un numero en la conosla
-// 2. El programa multiplica por los primeros 10 numeros a este numero ingresado
-// 3. Se debe imprimir el resultado de cada operación
+//// FOR
+//// 1. El usuaruio ingresa un numero en la conosla
+//// 2. El programa multiplica por los primeros 10 numeros a este numero ingresado
+//// 3. Se debe imprimir el resultado de cada operación
 
-Console.WriteLine("Ingrese un numero para multiplicar 10 veces");
-var numeroParaMultiplicar = int.Parse(Console.ReadLine()!);
+//Console.WriteLine("Ingrese un numero para multiplicar 10 veces");
+//var numeroParaMultiplicar = int.Parse(Console.ReadLine()!);
 
-for (int i = 1; i < 10; i++)
+//for (int i = 1; i < 10; i++)
+//{
+//    int resultado = i * numeroParaMultiplicar;
+//    Console.WriteLine($"{numeroParaMultiplicar} x {i} = {resultado}");
+//}
+
+////WHILE
+
+//// 1. El usuario ingresa un numero  
+//// 2. El programa captura el numero e imprime una lista de numeros superiores hasta el maximo de 100
+//// regla: el numero ingresado debe ser menor que 100
+
+//Console.WriteLine("Ingrese un numero menor que 100");
+//int numeroWhile = int.Parse(Console.ReadLine()!);
+
+//while (numeroWhile <= 100)
+//{
+//    Console.WriteLine(numeroWhile);
+//    numeroWhile++;
+//}
+
+//// DO WHILE
+
+//// 1. El usuario ingresa n veces numeros a sumarse
+//// 2. Si el usuario ingresa 0 entonces se debe detener la suma
+//// 3. Imprime el total de la suma
+
+//int acumulador = 0;
+//int numeroDoWhile = 0;
+
+//do
+//{
+//    try
+//    {
+//        Console.WriteLine("Ingrese el numero a sumar:");
+//        numeroDoWhile = int.Parse(Console.ReadLine()!);
+//    }
+//    // catch(Exception e) para una excepción mas general
+//    // en este caso queremos devolver un error de que no se devolvio un valor numerico
+//    catch(System.FormatException error)
+//    {
+//        Console.WriteLine("El error es el siguiente:\n" + error.Message);
+//        if (error.Message is null)
+//        {
+//            throw;
+//        }
+
+//        // anulamos la iteración para que no quede almacenado el numero anterior
+//        continue;
+//    }
+
+//    acumulador += numeroDoWhile;
+//}
+//while (numeroDoWhile != 0);
+
+//Console.WriteLine($"El total de la suma es: {acumulador}");
+
+//// ---------METODOS---------
+
+void ImprimirTexto()
 {
-    int resultado = i * numeroParaMultiplicar;
-    Console.WriteLine($"{numeroParaMultiplicar} x {i} = {resultado}");
+    Console.WriteLine("Texto a imprimir");
 }
 
-//WHILE
+ImprimirTexto();
 
-// 1. El usuario ingresa un numero  
-// 2. El programa captura el numero e imprime una lista de numeros superiores hasta el maximo de 100
-// regla: el numero ingresado debe ser menor que 100
+// 1. El usuario ingresa el numero que representa cuantas veces se generarar este valor aleatorio
+// 2. En el bucle se generara un numero aleatorio entre 1 y 1000
+// 3. Imprimir dentro del bucle este numero aleatorio previamente generado.
 
-Console.WriteLine("Ingrese un numero menor que 100");
-int numeroWhile = int.Parse(Console.ReadLine()!);
-
-while (numeroWhile <= 100)
+void ImprimirNumeroAleatorio()
 {
-    Console.WriteLine(numeroWhile);
-    numeroWhile++;
-}
+    Console.WriteLine("Ingrese el numero de veces a generar aleatorios");
+    var numeroRango = int.Parse(Console.ReadLine()!);
 
-// DO WHILE
-
-// 1. El usuario ingresa n veces numeros a sumarse
-// 2. Si el usuario ingresa 0 entonces se debe detener la suma
-// 3. Imprime el total de la suma
-
-int acumulador = 0;
-int numeroDoWhile = 0;
-
-do
-{
-    try
+    var random = new Random();
+    for (int i = 1; i <= numeroRango; i++)
     {
-        Console.WriteLine("Ingrese el numero a sumar:");
-        numeroDoWhile = int.Parse(Console.ReadLine()!);
+        var numeroAleatorio = random.Next(1, 100);
+        Console.WriteLine($"El numero aleatorio generado eso {numeroAleatorio}");
     }
-    // catch(Exception e) para una excepción mas general
-    // en este caso queremos devolver un error de que no se devolvio un valor numerico
-    catch(System.FormatException error)
-    {
-        Console.WriteLine("El error es el siguiente:\n" + error.Message);
-        if (error.Message is null)
-        {
-            throw;
-        }
-
-        // anulamos la iteración para que no quede almacenado el numero anterior
-        continue;
-    }
-
-    acumulador += numeroDoWhile;
 }
-while (numeroDoWhile != 0);
 
-Console.WriteLine($"El total de la suma es: {acumulador}");
+ImprimirNumeroAleatorio();
