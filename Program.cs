@@ -350,7 +350,7 @@ Console.WriteLine("Hello, World!");
 
 //Console.WriteLine($"datos del producto {tupla.Item3}\nStock: {tupla.Item2}\nPrecio Final: {tupla.Item1}");
 
-Libro primerLibro = new Libro("On The Road", "Jack Kerouac", 325);
+Libro primerLibro = new Libro("On The Road", "Jack Kerouac", 325, 25.10m);
 
 // no podemos acceder a los parametros que no sean publicos
 var resultado = primerLibro.GetDescripcion();
@@ -359,14 +359,18 @@ Console.WriteLine(resultado);
 // cambiar nombre desde fuera del objeto si el parametro es publico
 // onTheRoad._nombre = "En el Camino";
 // cambiar nombre desde con un metodo del objeto
-primerLibro.SetNombre("El Quijote");
+primerLibro.Nombre = "El Quijote";
 // metodo acceso para acceder al nombre
-var nombreModificadoLibro = primerLibro.GetNombre();
+var nombreModificadoLibro = primerLibro.Nombre;
 
-primerLibro.SetAutor("Miguel de Cervantes");
-var autorModificadoLibro = primerLibro.GetAutor();
+primerLibro.Autor = "Miguel de Cervantes";
+var autorModificadoLibro = primerLibro.Autor;
 
-primerLibro.SetCantidadPaginas(1213);
-var cantidadPaginasModificadasLibro = primerLibro.GetCantidadPaginas();
+primerLibro.CantidadPaginas = 1213;
+var cantidadPaginasModificadasLibro = primerLibro.CantidadPaginas;
 
 Console.WriteLine($"{nombreModificadoLibro} por {autorModificadoLibro}, con {cantidadPaginasModificadasLibro} paginas");
+
+Revista revistaTimes = new Revista("Maria Lopez", "Times Magazine", 83, 25.10m);
+var revistaResultado = revistaTimes.GetDescripcion();
+Console.WriteLine($"{revistaResultado}");
