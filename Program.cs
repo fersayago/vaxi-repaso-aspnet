@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using PrimeraAplicacion;
+
 Console.WriteLine("Hello, World!");
 
 ///*
@@ -318,31 +321,52 @@ Console.WriteLine("Hello, World!");
 //var miTuplaValorItem3 = miTupla.Item3;
 //Console.WriteLine($"Tercer valor de la tupla: {miTuplaValorItem3}");
 
-// Metodos y tuplas
+//// Metodos y tuplas
 
-// objetivo: Registrar un nuevo producto en una tienda
-// 1. El usuario ingresa ladata del producto como: nombre, precio, stoc
-// 2. El programa va a capturar la data y procedera a poner un precio de venta que
-// incluya el costo del impuesto del producto
-// 3. El metodo de registro de producto debe devolver la data del producto
-// 4. El programa debe imprimir la data del producto registrado
+//// objetivo: Registrar un nuevo producto en una tienda
+//// 1. El usuario ingresa ladata del producto como: nombre, precio, stoc
+//// 2. El programa va a capturar la data y procedera a poner un precio de venta que
+//// incluya el costo del impuesto del producto
+//// 3. El metodo de registro de producto debe devolver la data del producto
+//// 4. El programa debe imprimir la data del producto registrado
 
-Console.WriteLine("Ingrese el nombre del producto");
-var nombreProducto = Console.ReadLine();
+//Console.WriteLine("Ingrese el nombre del producto");
+//var nombreProducto = Console.ReadLine();
 
-Console.WriteLine("Ingrese el precio del producto");
-var precioProducto = int.Parse(Console.ReadLine()!);
+//Console.WriteLine("Ingrese el precio del producto");
+//var precioProducto = int.Parse(Console.ReadLine()!);
 
-Console.WriteLine("Ingrese el stock del producto");
-var stockProducto = int.Parse(Console.ReadLine()!);
+//Console.WriteLine("Ingrese el stock del producto");
+//var stockProducto = int.Parse(Console.ReadLine()!);
 
-(double, int, string) GetProducto(string nombreProducto, int precioProducto, int stock)
-{
-    var precioFinal = precioProducto + precioProducto * 0.2;
+//(double, int, string) GetProducto(string nombreProducto, int precioProducto, int stock)
+//{
+//    var precioFinal = precioProducto + precioProducto * 0.2;
 
-    return (precioFinal, stock, nombreProducto);
-}
+//    return (precioFinal, stock, nombreProducto);
+//}
 
-var tupla = GetProducto(nombreProducto!, precioProducto, stockProducto);
+//var tupla = GetProducto(nombreProducto!, precioProducto, stockProducto);
 
-Console.WriteLine($"datos del producto {tupla.Item3}\nStock: {tupla.Item2}\nPrecio Final: {tupla.Item1}");
+//Console.WriteLine($"datos del producto {tupla.Item3}\nStock: {tupla.Item2}\nPrecio Final: {tupla.Item1}");
+
+Libro primerLibro = new Libro("On The Road", "Jack Kerouac", 325);
+
+// no podemos acceder a los parametros que no sean publicos
+var resultado = primerLibro.GetDescripcion();
+Console.WriteLine(resultado);
+
+// cambiar nombre desde fuera del objeto si el parametro es publico
+// onTheRoad._nombre = "En el Camino";
+// cambiar nombre desde con un metodo del objeto
+primerLibro.SetNombre("El Quijote");
+// metodo acceso para acceder al nombre
+var nombreModificadoLibro = primerLibro.GetNombre();
+
+primerLibro.SetAutor("Miguel de Cervantes");
+var autorModificadoLibro = primerLibro.GetAutor();
+
+primerLibro.SetCantidadPaginas(1213);
+var cantidadPaginasModificadasLibro = primerLibro.GetCantidadPaginas();
+
+Console.WriteLine($"{nombreModificadoLibro} por {autorModificadoLibro}, con {cantidadPaginasModificadasLibro} paginas");
